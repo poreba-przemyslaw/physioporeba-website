@@ -725,7 +725,7 @@
 
       const tryOpen = () => {
         const candidates = Array.from(document.querySelectorAll(
-          '#termin button, #termin input[type="button"], #termin input[type="submit"], #termin a'
+          '#termin button, #termin input[type="button"], #termin input[type="submit"], #termin a, #theveaBookingButton'
         )).filter(el => el.id !== 'theveaBookingButton' && el.offsetParent !== null);
 
         const providerButton = candidates.find(el => {
