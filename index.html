@@ -372,12 +372,9 @@
     }
 
     .booking-widget-box{
-      min-height:180px;
-      border-radius:22px;
-      background:#fff;
-      border:1px solid var(--line);
-      padding:18px;
-      overflow:hidden;
+      min-height:0;
+      padding:0;
+      overflow:visible;
     }
 
 
@@ -630,6 +627,8 @@
           </div>
 
           <div class="booking-widget-box">
+            <a class="btn btn-primary" href="#termin" id="theveaBookingButton">Terminbuchung öffnen</a>
+
             <!-- oddc bookings code start -->
             <script type="text/javascript">
               (function (d) {
@@ -717,6 +716,46 @@
         menuBtn.setAttribute('aria-expanded', 'false');
       });
     });
+
+    function openTheveaBooking(event) {
+      if (event) event.preventDefault();
+
+      const section = document.getElementById('termin');
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      const tryOpen = () => {
+        const candidates = Array.from(document.querySelectorAll(
+          '#termin button, #termin input[type="button"], #termin input[type="submit"], #termin a'
+        )).filter(el => el.id !== 'theveaBookingButton' && el.offsetParent !== null);
+
+        const providerButton = candidates.find(el => {
+          const t = (el.textContent || el.value || '').toLowerCase();
+          return /termin|buch|appointment|book/.test(t);
+        }) || candidates[0];
+
+        if (providerButton) {
+          providerButton.click();
+          return true;
+        }
+        return false;
+      };
+
+      if (!tryOpen()) {
+        let attempts = 0;
+        const timer = setInterval(() => {
+          attempts++;
+          if (tryOpen() || attempts >= 20) clearInterval(timer);
+        }, 250);
+      }
+    }
+
+    document.querySelectorAll('a[href="#termin"]').forEach(link => {
+      if (link.id !== 'theveaBookingButton') {
+        link.addEventListener('click', openTheveaBooking);
+      }
+    });
+
+    document.getElementById('theveaBookingButton')?.addEventListener('click', openTheveaBooking);
   </script>
 </body>
 </html>
