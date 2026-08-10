@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Physio Poreba – Physiotherapie in Ohlsbach. Krankengymnastik, KG-ZNS/Bobath, Manuelle Therapie, Manuelle Lymphdrainage, CMD, Massage, Fango, Schlingentisch und Hausbesuche." />
+  <meta name="theme-color" content="#f7faf7" />
+  <title>Physio Poreba | Physiotherapie in Ohlsbach</title>
+
+  <style>
+    :root{
+      --bg:#f6f8f5;
+      --surface:#ffffff;
+      --text:#183228;
+      --muted:#65756d;
+      --line:#dfe7e1;
+      --accent:#9bb8a6;
+      --accent-dark:#456956;
+      --accent-soft:#e8f0ea;
+      --shadow:0 18px 50px rgba(41,68,54,.08);
+      --radius:24px;
+      --radius-sm:16px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input,textarea{font:inherit}
+
+    .container{
+      width:min(var(--max), calc(100% - 32px));
+      margin-inline:auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(246,248,245,.88);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(223,231,225,.8);
+    }
+
+    .nav{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+
+    .brand-mark{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:var(--accent-soft);
+      color:var(--accent-dark);
+      font-size:14px;
+      border:1px solid var(--line);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:26px;
+      font-size:15px;
+      color:#385044;
+    }
+
+    .nav-cta{
+      padding:11px 16px;
+      border-radius:999px;
+      background:var(--text);
+      color:white;
+      font-weight:700;
+    }
+
+    .menu-btn{display:none}
+
+    .hero{
+      padding:88px 0 64px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:54px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      background:var(--accent-soft);
+      border:1px solid var(--line);
+      color:var(--accent-dark);
+      border-radius:999px;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    h1,h2,h3{line-height:1.08;margin:0}
+    h1{
+      font-size:clamp(44px,7vw,82px);
+      letter-spacing:-.055em;
+      max-width:10ch;
+    }
+
+    .hero p{
+      font-size:19px;
+      color:var(--muted);
+      max-width:620px;
+      margin:24px 0 30px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 18px;
+      border-radius:999px;
+      font-weight:800;
+      transition:.2s ease;
+      border:1px solid transparent;
+    }
+
+    .btn-primary{
+      background:var(--text);
+      color:white;
+    }
+    .btn-primary:hover{transform:translateY(-1px);opacity:.94}
+
+    .btn-secondary{
+      background:var(--surface);
+      border-color:var(--line);
+      color:var(--text);
+    }
+    .btn-secondary:hover{background:#fbfcfb}
+
+    .hero-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px 22px;
+      color:#50655a;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .hero-card{
+      min-height:430px;
+      border-radius:34px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(155,184,166,.34), transparent 32%),
+        linear-gradient(145deg,#edf4ef 0%,#f9fbf9 55%,#e9f0eb 100%);
+      box-shadow:var(--shadow);
+      padding:34px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      width:250px;
+      height:250px;
+      right:-70px;
+      bottom:-90px;
+      border-radius:50%;
+      border:44px solid rgba(255,255,255,.65);
+    }
+
+    .hero-card small{
+      color:var(--accent-dark);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-weight:800;
+    }
+
+    .hero-card strong{
+      font-size:34px;
+      max-width:10ch;
+      line-height:1.1;
+      letter-spacing:-.035em;
+      z-index:1;
+    }
+
+    section{padding:70px 0}
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:24px;
+      margin-bottom:30px;
+    }
+
+    .section-head p{
+      max-width:620px;
+      margin:0;
+      color:var(--muted);
+    }
+
+    h2{
+      font-size:clamp(32px,5vw,54px);
+      letter-spacing:-.04em;
+    }
+
+    .services{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .service{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:24px;
+      min-height:180px;
+      box-shadow:0 8px 25px rgba(41,68,54,.035);
+    }
+
+    .service-icon{
+      width:42px;height:42px;
+      border-radius:13px;
+      display:grid;place-items:center;
+      background:var(--accent-soft);
+      margin-bottom:20px;
+      color:var(--accent-dark);
+      font-weight:900;
+    }
+
+    .service h3{font-size:20px;margin-bottom:8px}
+    .service p{margin:0;color:var(--muted);font-size:15px}
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:30px;
+    }
+
+    .about-panel,.hours-panel,.contact-panel{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:30px;
+    }
+
+    .about-panel{
+      background:var(--text);
+      color:white;
+    }
+
+    .about-panel p{color:#dbe5df}
+    .about-text p{color:var(--muted);font-size:17px}
+
+    .booking{
+      background:var(--accent-soft);
+      border-block:1px solid var(--line);
+    }
+
+    .booking-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:30px;
+      padding:12px 0;
+    }
+
+    .booking h2{font-size:clamp(30px,4vw,44px)}
+    .booking p{margin:10px 0 0;color:#546a5f}
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .hours-list{
+      display:grid;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .hours-row{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      padding-bottom:10px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hours-row:last-child{border-bottom:0}
+    .hours-row span:last-child{text-align:right;color:var(--muted)}
+
+    .contact-lines{
+      display:grid;
+      gap:12px;
+      margin:22px 0;
+      color:#42584d;
+    }
+
+    .contact-lines a{text-decoration:underline;text-underline-offset:3px}
+
+    .legal-note{
+      margin-top:20px;
+      padding:14px 16px;
+      border-radius:14px;
+      background:#fff8df;
+      color:#6d5b1f;
+      border:1px solid #efe2a8;
+      font-size:14px;
+    }
+
+    .booking-widget-section{
+      padding:70px 0;
+      background:var(--surface);
+    }
+
+    .booking-widget-wrap{
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:32px;
+      background:linear-gradient(145deg,#ffffff 0%,#f3f7f4 100%);
+      box-shadow:var(--shadow);
+    }
+
+    .booking-widget-head{
+      max-width:720px;
+      margin-bottom:26px;
+    }
+
+    .booking-widget-head p{
+      color:var(--muted);
+      font-size:17px;
+      margin:14px 0 0;
+    }
+
+    .booking-widget-box{
+      min-height:0;
+      padding:0;
+      overflow:visible;
+    }
+
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:30px 0 42px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
+
+    .mobile-call{
+      display:none;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .hero{padding-top:56px}
+      .hero-card{min-height:300px}
+      .nav-links{display:none}
+      .menu-btn{
+        display:inline-flex;
+        border:1px solid var(--line);
+        background:var(--surface);
+        border-radius:12px;
+        padding:9px 12px;
+        font-weight:800;
+        color:var(--text);
+      }
+      .nav-links.open{
+        display:flex;
+        position:absolute;
+        left:16px;
+        right:16px;
+        top:70px;
+        background:var(--surface);
+        border:1px solid var(--line);
+        border-radius:18px;
+        padding:18px;
+        flex-direction:column;
+        align-items:stretch;
+        gap:12px;
+        box-shadow:var(--shadow);
+      }
+      .booking-inner{align-items:flex-start;flex-direction:column}
+    }
+
+    @media (max-width: 620px){
+      .container{width:min(100% - 22px,var(--max))}
+      .services{grid-template-columns:1fr}
+      section{padding:54px 0}
+      .hero{padding:48px 0}
+      .hero-card{min-height:250px;padding:24px}
+      .section-head{align-items:flex-start;flex-direction:column}
+      .actions .btn{width:100%}
+      .mobile-call{
+        display:flex;
+        position:fixed;
+        right:14px;
+        bottom:14px;
+        z-index:60;
+        min-height:52px;
+        padding:0 18px;
+        border-radius:999px;
+        background:var(--text);
+        color:white;
+        align-items:center;
+        justify-content:center;
+        font-weight:800;
+        box-shadow:0 12px 28px rgba(24,50,40,.25);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#start" aria-label="Physio Poreba Startseite">
+        <span class="brand-mark">PP</span>
+        <span>PHYSIO POREBA</span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menü</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Hauptnavigation">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#praxis">Praxis</a>
+        <a href="#zeiten">Öffnungszeiten</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="nav-cta" href="#termin">Termin buchen</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="start">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Physiotherapie in Ohlsbach</div>
+          <h1>Bewegung beginnt mit Vertrauen.</h1>
+          <p>
+            Individuelle physiotherapeutische Behandlung in ruhiger Atmosphäre –
+            mit einem klaren Blick auf Ihre Beschwerden, Ihre Ziele und Ihren Alltag.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="#termin">Termin buchen</a>
+            <a class="btn btn-secondary" href="tel:+4915757990652">0157 57990652</a>
+          </div>
+
+          <div class="hero-meta">
+            <span>Riesenwaldstraße 12, 77797 Ohlsbach</span>
+            <span>Hausbesuche möglich</span>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-hidden="true">
+          <small>Physio Poreba</small>
+          <strong>Persönlich. Klar. Beweglich.</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="leistungen">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Leistungen</div>
+            <h2>Therapie, die zu Ihrem Alltag passt.</h2>
+          </div>
+          <p>
+            Unser Angebot umfasst klassische und neurologische Physiotherapie sowie ergänzende Behandlungsformen.
+          </p>
+        </div>
+
+        <div class="services">
+          <article class="service">
+            <div class="service-icon">KG</div>
+            <h3>Krankengymnastik</h3>
+            <p>Gezielte Übungen zur Verbesserung von Beweglichkeit, Kraft, Koordination und Belastbarkeit.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon">ZNS</div>
+            <h3>KG-ZNS / Bobath</h3>
+            <p>Neurologisch orientierte Therapie bei Störungen des zentralen Nervensystems.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon">MT</div>
+            <h3>Manuelle Therapie</h3>
+            <p>Untersuchung und Behandlung von Funktionsstörungen an Gelenken und angrenzenden Strukturen.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon">MLD</div>
+            <h3>Manuelle Lymphdrainage</h3>
+            <p>Sanfte Behandlung zur Unterstützung des Lymphabflusses bei entsprechenden Verordnungen.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon">CMD</div>
+            <h3>CMD-Behandlung</h3>
+            <p>Physiotherapeutische Behandlung bei Beschwerden des Kiefergelenks und der umgebenden Muskulatur.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon">MA</div>
+            <h3>Massage</h3>
+            <p>Klassische Massagetechniken zur Lockerung verspannter Muskulatur und Unterstützung der Regeneration.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon">FA</div>
+            <h3>Fango</h3>
+            <p>Wärmeanwendung zur Vorbereitung der Muskulatur und als ergänzende Maßnahme innerhalb der Therapie.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon">ST</div>
+            <h3>Schlingentisch</h3>
+            <p>Entlastete Bewegungsbehandlung mit Hilfe von Schlingen, besonders bei schmerzhaften Bewegungseinschränkungen.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon">HB</div>
+            <h3>Hausbesuche</h3>
+            <p>Physiotherapeutische Behandlung bei Ihnen zu Hause, sofern medizinisch verordnet oder individuell vereinbart.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="praxis">
+      <div class="container about-grid">
+        <div class="about-panel">
+          <div class="eyebrow">Die Praxis</div>
+          <h2 style="font-size:42px;">Zeit für eine Behandlung mit Ruhe und Struktur.</h2>
+          <p>
+            Bei Physio Poreba steht eine nachvollziehbare, individuell abgestimmte Therapie im Mittelpunkt.
+          </p>
+        </div>
+
+        <div class="about-text">
+          <h3 style="font-size:28px;margin-bottom:14px;">Physio Poreba in Ohlsbach</h3>
+          <p>
+            Jede Behandlung beginnt mit einem Blick auf Ihre aktuelle Situation. Gemeinsam werden realistische
+            Therapieziele festgelegt und die Behandlung daran ausgerichtet.
+          </p>
+          <p>
+            Termine können Sie direkt online buchen. Alternativ erreichen Sie die Praxis weiterhin telefonisch oder per E-Mail.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking">
+      <div class="container booking-inner">
+        <div>
+          <h2>Termin direkt online buchen</h2>
+          <p>Wählen Sie bequem einen passenden Termin. Alternativ erreichen Sie uns weiterhin telefonisch oder per E-Mail.</p>
+        </div>
+        <div class="actions" style="margin:0">
+          <a class="btn btn-primary" href="#termin">Termin buchen</a>
+          <a class="btn btn-secondary" href="tel:+4915757990652">Anrufen</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-widget-section" id="termin">
+      <div class="container">
+        <div class="booking-widget-wrap">
+          <div class="booking-widget-head">
+            <div class="eyebrow">Online-Terminbuchung</div>
+            <h2>Ihr Termin bei Physio Poreba</h2>
+            <p>
+              Wählen Sie direkt online einen freien Termin. Die Buchung wird sicher über unser
+              Terminbuchungssystem bereitgestellt.
+            </p>
+          </div>
+
+          <div class="booking-widget-box">
+            <a class="btn btn-primary" href="#termin" id="theveaBookingButton">Terminbuchung öffnen</a>
+
+            <!-- oddc bookings code start -->
+            <script type="text/javascript">
+              (function (d) {
+                var c = window.oddcBookings = window.oddcBookings || [];
+                c.push(['bookingFlowId', '01KVSPYTHGQ1HTM38R68SMNZ8Q']);
+                var g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                g.type = 'text/javascript';
+                g.async = true;
+                g.src = 'https://bookings-embed.optadata-performance.de/bookings.js';
+                s.parentNode.insertBefore(g, s);
+              })(document);
+            </script>
+            <!-- oddc bookings code end -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="zeiten">
+      <div class="container contact-grid">
+        <div class="hours-panel">
+          <div class="eyebrow">Öffnungszeiten</div>
+          <h2 style="font-size:40px;">Wann wir für Sie da sind</h2>
+
+          <div class="hours-list">
+            <div class="hours-row"><span>Montag</span><span>09:00–14:00<br>15:00–19:00</span></div>
+            <div class="hours-row"><span>Dienstag</span><span>10:00–18:00</span></div>
+            <div class="hours-row"><span>Mittwoch</span><span>09:00–14:00<br>15:00–19:00</span></div>
+            <div class="hours-row"><span>Donnerstag</span><span>10:00–16:00</span></div>
+            <div class="hours-row"><span>Freitag</span><span>Geschlossen</span></div>
+            <div class="hours-row"><span>Samstag</span><span>Geschlossen</span></div>
+            <div class="hours-row"><span>Sonntag</span><span>Geschlossen</span></div>
+          </div>
+        </div>
+
+        <div class="contact-panel" id="kontakt">
+          <div class="eyebrow">Kontakt & Anfahrt</div>
+          <h2 style="font-size:40px;">Physio Poreba</h2>
+
+          <div class="contact-lines">
+            <div>Riesenwaldstraße 12<br>77797 Ohlsbach</div>
+            <a href="tel:+4915757990652">0157 57990652</a>
+            <a href="mailto:physioporeba@gmail.com">physioporeba@gmail.com</a>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Riesenwaldstraße%2012%2C%2077797%20Ohlsbach" target="_blank" rel="noopener">Route öffnen</a>
+          </div>
+
+          <div class="legal-note">
+            Vor der Veröffentlichung bitte Impressum und Datenschutzerklärung mit den vollständigen rechtlichen Angaben ergänzen.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© <span id="year"></span> Physio Poreba · physioporeba.de</div>
+      <div class="footer-links">
+        <a href="#kontakt">Kontakt</a>
+        <a href="#" onclick="alert('Impressum wird vor Veröffentlichung ergänzt.'); return false;">Impressum</a>
+        <a href="#" onclick="alert('Datenschutzerklärung wird vor Veröffentlichung ergänzt.'); return false;">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="mobile-call" href="tel:+4915757990652" aria-label="Physio Poreba anrufen">Anrufen</a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    function openTheveaBooking(event) {
+      if (event) event.preventDefault();
+
+      const section = document.getElementById('termin');
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      const tryOpen = () => {
+        const candidates = Array.from(document.querySelectorAll(
+          '#termin button, #termin input[type="button"], #termin input[type="submit"], #termin a'
+        )).filter(el => el.id !== 'theveaBookingButton' && el.offsetParent !== null);
+
+        const providerButton = candidates.find(el => {
+          const t = (el.textContent || el.value || '').toLowerCase();
+          return /termin|buch|appointment|book/.test(t);
+        }) || candidates[0];
+
+        if (providerButton) {
+          providerButton.click();
+          return true;
+        }
+        return false;
+      };
+
+      if (!tryOpen()) {
+        let attempts = 0;
+        const timer = setInterval(() => {
+          attempts++;
+          if (tryOpen() || attempts >= 20) clearInterval(timer);
+        }, 250);
+      }
+    }
+
+    document.querySelectorAll('a[href="#termin"]').forEach(link => {
+      if (link.id !== 'theveaBookingButton') {
+        link.addEventListener('click', openTheveaBooking);
+      }
+    });
+
+    document.getElementById('theveaBookingButton')?.addEventListener('click', openTheveaBooking);
+  </script>
+</body>
+</html>
