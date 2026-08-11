@@ -720,39 +720,74 @@
     function openTheveaBooking(event) {
       if (event) event.preventDefault();
 
-      const section = document.getElementById('termin');
-      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const triggerThevea = () => {
+        const el = document.querySelector('oddc-bf-main-button');
+        if (!el) return false;
 
-      const tryOpen = () => {
-        const candidates = Array.from(document.querySelectorAll(
-          '#termin button, #termin input[type="button"], #termin input[type="submit"], #termin a, #theveaBookingButton'
-        )).filter(el => el.id !== 'theveaBookingButton' && el.offsetParent !== null);
+        const common = { bubbles: true, cancelable: true, composed: true, view: window };
 
-        const providerButton = candidates.find(el => {
-          const t = (el.textContent || el.value || '').toLowerCase();
-          return /termin|buch|appointment|book/.test(t);
-        }) || candidates[0];
+        try {
+          el.dispatchEvent(new PointerEvent('pointerdown', { ...common, pointerType: 'mouse', isPrimary: true }));
+        } catch (e) {}
 
-        if (providerButton) {
-          providerButton.click();
-          return true;
-        }
-        return false;
+        try {
+          el.dispatchEvent(new MouseEvent('mousedown', common));
+          el.dispatchEvent(new MouseEvent('mouseup', common));
+          el.dispatchEvent(new MouseEvent('click', common));
+        } catch (e) {}
+
+        try {
+          el.dispatchEvent(new KeyboardEvent('keydown', {
+            key: 'Enter',
+            code: 'Enter',
+            bubbles: true,
+            cancelable: true,
+            composed: true
+          }));
+          el.dispatchEvent(new KeyboardEvent('keyup', {
+            key: 'Enter',
+            code: 'Enter',
+            bubbles: true,
+            cancelable: true,
+            composed: true
+          }));
+        } catch (e) {}
+
+        try {
+          el.dispatchEvent(new KeyboardEvent('keydown', {
+            key: ' ',
+            code: 'Space',
+            bubbles: true,
+            cancelable: true,
+            composed: true
+          }));
+          el.dispatchEvent(new KeyboardEvent('keyup', {
+            key: ' ',
+            code: 'Space',
+            bubbles: true,
+            cancelable: true,
+            composed: true
+          }));
+        } catch (e) {}
+
+        try { el.click(); } catch (e) {}
+
+        return true;
       };
 
-      if (!tryOpen()) {
-        let attempts = 0;
-        const timer = setInterval(() => {
-          attempts++;
-          if (tryOpen() || attempts >= 20) clearInterval(timer);
-        }, 250);
-      }
+      if (triggerThevea()) return;
+
+      let attempts = 0;
+      const timer = setInterval(() => {
+        attempts++;
+        if (triggerThevea() || attempts >= 40) {
+          clearInterval(timer);
+        }
+      }, 250);
     }
 
     document.querySelectorAll('a[href="#termin"]').forEach(link => {
-      if (link.id !== 'theveaBookingButton') {
-        link.addEventListener('click', openTheveaBooking);
-      }
+      link.addEventListener('click', openTheveaBooking);
     });
 
     document.getElementById('theveaBookingButton')?.addEventListener('click', openTheveaBooking);
